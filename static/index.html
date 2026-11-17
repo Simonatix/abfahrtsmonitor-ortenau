@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abfahrtsmonitor Ortenaukreis</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <h1>🚌🚆 Abfahrtsmonitor Ortenaukreis</h1>
+  <p class="subtitle">Bus &amp; Bahn im Ortenaukreis – Live-Abfahrtszeiten aus der EFA-BW (NVBW / bwegt)</p>
+</header>
+<main>
+  <section class="search">
+    <input id="stop-search" type="search" autocomplete="off" spellcheck="false"
+           placeholder="Haltestelle suchen, z.&nbsp;B. „Offenburg Hbf“, „Achern“, „Kehl Rathaus“ …"
+           aria-label="Haltestelle suchen">
+    <div id="suggestions" class="suggestions" hidden></div>
+    <div class="quick">
+      <span>Schnellwahl:</span>
+      <button type="button" data-q="Offenburg Hbf">Offenburg Hbf</button>
+      <button type="button" data-q="Achern">Achern</button>
+      <button type="button" data-q="Kehl Rathaus">Kehl Rathaus</button>
+      <button type="button" data-q="Lahr Rathaus">Lahr</button>
+      <button type="button" data-q="Gengenbach Bahnhof">Gengenbach Bf</button>
+    </div>
+  </section>
+  <p id="error" class="error" hidden></p>
+  <section id="board" class="board" hidden>
+    <div class="board-head">
+      <h2 id="stop-name"></h2>
+      <div class="controls">
+        <div class="filters" id="filters">
+          <button type="button" class="chip active" data-filter="all">Alle</button>
+          <button type="button" class="chip" data-filter="bus">🚌 Bus</button>
+          <button type="button" class="chip" data-filter="bahn">🚆 Bahn</button>
+        </div>
+        <button type="button" id="refresh" title="Aktualisieren">⟳ aktualisieren</button>
+        <span id="updated" class="updated"></span>
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Abfahrt</th><th>Linie</th><th>Richtung</th><th>Gleis/Steig</th><th>Status</th></tr>
+      </thead>
+      <tbody id="departures"></tbody>
+    </table>
+    <p id="empty" class="empty" hidden>Keine Abfahrten in den nächsten Stunden gefunden.</p>
+  </section>
+</main>
+<footer>
+  Daten: Elektronische Fahrplanauskunft Baden-Württemberg (EFA-BW, NVBW mbH / MobiData BW),
+  Lizenz „Datenlizenz Deutschland – Namensnennung 2.0“. Haltestellensuche auf den Ortenaukreis
+  (DHID-Präfix de:08317:*) eingeschränkt.
+</footer>
+<script src="/static/app.js"></script>
+</body>
+</html>
